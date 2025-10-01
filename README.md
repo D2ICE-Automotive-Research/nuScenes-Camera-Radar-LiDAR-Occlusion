@@ -8,6 +8,9 @@ It includes:
 
 The goal is to simulate realistic sensor failures and degradations for **robust autonomous driving perception research**.  
 
+![Occlusion Example](https://github.com/sanjaychowdhry/nuScenes-Camera-Radar-LiDAR-Occlusion/thumbnail.png)
+
+
 ---
 
 ## Camera Occlusions (Dataset on IEEE DataPort)
