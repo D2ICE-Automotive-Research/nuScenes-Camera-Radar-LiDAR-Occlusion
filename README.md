@@ -31,7 +31,7 @@ Each occlusion is applied to the **six nuScenes camera views**:
 Both **mini** and **trainval** versions are available with the same folder structure.  
 
 📌 **Download from IEEE DataPort:**  
-👉 [Camera Occlusion Dataset for nuScenes (IEEE DataPort)]([https://ieee-dataport.org/](https://ieee-dataport.org/documents/occluded-nuscenes-multi-sensor-dataset-evaluating-perception-robustness-automated-0))  
+👉 [Camera Occlusion Dataset for nuScenes (IEEE DataPort)](https://ieee-dataport.org/documents/occluded-nuscenes-multi-sensor-dataset-evaluating-perception-robustness-automated-0)  
 
 ---
 
