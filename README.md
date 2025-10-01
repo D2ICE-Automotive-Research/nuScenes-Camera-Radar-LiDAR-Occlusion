@@ -35,7 +35,7 @@ Both **mini** and **trainval** versions are available with the same folder struc
 
 ---
 
-**Radar Occlusions (Scripts in this Repo)**
+### Radar Occlusions (Scripts in this Repo)
 The radar occlusions are implemented in a modified `get_radar_data()` function.  
 Replace the original function in `nuscenes_dataset.py` with the one provided here.  
 
@@ -63,8 +63,10 @@ radar_points = get_radar_data(nusc, sample_rec, nsweeps=5, min_distance=1.0,
                               dataroot="data/nuscenes", add_gaussian_noise=True,
                               add_noise_to_all=True, noise_std=0.05)
 
+```
 
-**LiDAR Occlusions (Scripts in this Repo)**
+### LiDAR Occlusions (Scripts in this Repo)
+
 
 The LiDAR occlusions are implemented in a modified `get_lidar_data()` function.  
 Replace the original function in `nuscenes_dataset.py` with the one provided in this repository.  
@@ -88,3 +90,4 @@ lidar_points = drop_spatial_region(points, region="left", drop_percentage=100)
 
 # 3. Angle-based Occlusion: drop 70% of points in the front (±45 degrees)
 lidar_points = drop_angle_based_region(points, region="front", drop_percentage=70, angle_range=90)
+```
