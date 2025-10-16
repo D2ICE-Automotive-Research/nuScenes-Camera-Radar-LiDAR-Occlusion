@@ -109,10 +109,14 @@ publisher = {IEEE Dataport},
 title = {Occluded nuScenes: A Multi-Sensor Dataset for Evaluating Perception Robustness in Automated Driving},
 year = {2025} }
 
-@article{kumar2025Exploring,
-  title={Exploring Sensor Impact and Architectural Robustness in Adverse Weather on BEV Perception},
-  author={kumar, Sanjay and Sharma, Sushil and Asghar, Rabia and  Mohandas, Reenu and Brophy, Tim and Gura, Eoin and Sistu, Ganesh and Donzella, Valentina and Eising, Ciaran},
-  journal={IEEE Open Journal of Vehicular Technology},
+@ARTICLE{11204511,
+  author={Kumar, Sanjay and Sharma, Sushil and Asghar, Rabia and Mohandas, Reenu and Brophy, Tim and Sistu, Ganesh and Grua, Eoin Martino and Donzella, Valentina and Eising, Ciaran},
+  journal={IEEE Open Journal of Vehicular Technology}, 
+  title={Exploring Sensor Impact and Architectural Robustness in Adverse Weather on BEV Perception}, 
   year={2025},
-  publisher={IEEE}
-}
+  volume={},
+  number={},
+  pages={1-22},
+  keywords={Cameras;Radar;Laser radar;Robustness;Transformers;Computer architecture;Snow;Spaceborne radar;Rain;Degradation;Multi-Sensor Fusion;Sensor Level Occlusion;Camera Features Projection;Bird's Eye View;Vehicle Segmentation;Map Segmentation;Transformer-Based Architectures;Geometric-Based Architectures},
+  doi={10.1109/OJVT.2025.3621862}}
+
