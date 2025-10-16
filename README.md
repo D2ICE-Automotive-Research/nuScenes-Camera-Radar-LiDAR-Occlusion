@@ -101,19 +101,18 @@ lidar_points = drop_angle_based_region(points, region="front", drop_percentage=7
 If you use this dataset or scripts in your research, please cite:
 ```bibtex
 
-@dataset{kumar2025occludednuscenes,
-  author={Kumar, Sanjay and Brophy, Tim and Gura, Eoin and Sistu, Ganesh and Donzella, Valentina and Eising, Ciar{\'a}n},
-  title={Occluded nuScenes Multi-Sensor Dataset for Evaluating Perception Robustness in Automated Driving},
+@data{fd64-0p49-25,
+doi = {10.21227/fd64-0p49},
+url = {https://dx.doi.org/10.21227/fd64-0p49},
+author = {Sanjay Kumar and Tim Brophy and Reenu Mohandas and Eoin Martino Grua and Ganesh Sistu and Valentina Donzella and Ciaran Eising},
+publisher = {IEEE Dataport},
+title = {Occluded nuScenes: A Multi-Sensor Dataset for Evaluating Perception Robustness in Automated Driving},
+year = {2025} }
+
+@article{kumar2025Exploring,
+  title={Exploring Sensor Impact and Architectural Robustness in Adverse Weather on BEV Perception},
+  author={kumar, Sanjay and Sharma, Sushil and Asghar, Rabia and  Mohandas, Reenu and Brophy, Tim and Gura, Eoin and Sistu, Ganesh and Donzella, Valentina and Eising, Ciaran},
+  journal={IEEE Open Journal of Vehicular Technology},
   year={2025},
-  publisher={IEEE Dataport},
-  doi={10.21227/fd64-0p49}  % replace with your actual DOI from IEEE Dataport
-}
-
-
-
-@article{kumar2025minimizing,
-  title={Minimizing Occlusion Effect on Multi-View Camera Perception in BEV with Multi-Sensor Fusion},
-  author={Kumar, Sanjay and Truong, Hiep and Sharma, Sushil and Sistu, Ganesh and Scanlan, Tony and Grua, Eoin and Eising, Ciar{\'a}n},
-  journal={arXiv preprint arXiv:2501.05997},
-  year={2025}
+  publisher={IEEE}
 }
