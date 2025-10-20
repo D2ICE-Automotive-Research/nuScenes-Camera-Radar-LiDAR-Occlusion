@@ -95,6 +95,10 @@ lidar_points = drop_spatial_region(points, region="left", drop_percentage=100)
 # 3. Angle-based Occlusion: drop 70% of points in the front (±45 degrees)
 lidar_points = drop_angle_based_region(points, region="front", drop_percentage=70, angle_range=90)
 ```
+## Acknowledgement
+
+This dataset is built upon the publicly available [nuScenes](https://www.nuscenes.org/) dataset by Motional. We thank the nuScenes team for providing a high-quality multi-sensor dataset that made the development of the Occluded nuScenes Dataset possible.
+
 
 ## Citation
 
