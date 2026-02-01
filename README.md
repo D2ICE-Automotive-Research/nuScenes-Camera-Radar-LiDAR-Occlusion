@@ -39,33 +39,64 @@ Both **mini** and **trainval** versions are available with the same folder struc
 
 ---
 
-### Radar Occlusions (Scripts in this Repo)
-The radar occlusions are implemented in a modified `get_radar_data()` function.  
-Replace the original function in `nuscenes_dataset.py` with the one provided here.  
+### Radar Occlusions (Script in this Repo)
+Radar occlusions are implemented by modifying the `get_radar_data()` function, provided as a drop-in replacement for the corresponding function in the nuScenes data loading pipeline `nuscenes_dataset.py` with the one provided here. The occlusion logic supports deterministic, reproducible radar degradation by using fixed random seeds and explicitly documented parameters.
+
+All stochastic operations use a fixed random seed  `seed=42` to ensure reproducibility across runs. Example parameter settings corresponding to the experiments reported in the accompanying paper are documented in the script.
 
 ### Radar Occlusion Types
-1. **Drop entire radar sensors** (fixed list or randomly selected one)  
-2. **Random Point Drop** → drop percentage of radar points from one or all radars  
-3. **Gaussian Noise** → add Gaussian noise to radar points (per sensor or all sensors)  
+1. **Sensor Dropout** → Drop one or more radar sensors, either from a fixed list or by randomly selecting a single radar.
+2. **Random Point Drop** → Remove a specified percentage of radar points from a single radar sensor or from all radar sensors.  
+3. **Gaussian Noise Injection** → Add Gaussian noise to radar point coordinates for one or all radar sensors.  
 
 ### Example Usage
 ```python
-# Drop a specific radar sensor
-radar_points = get_radar_data(nusc, sample_rec, nsweeps=5, min_distance=1.0,
-                              dataroot="data/nuscenes", radars_to_drop=["RADAR_FRONT"])
+# Drop a specific radar sensor (deterministic given fixed seed)
+radar_points = get_radar_data(
+    nusc,
+    sample_rec,
+    nsweeps=5,
+    min_distance=1.0,
+    dataroot="data/nuscenes",
+    radars_to_drop=["RADAR_FRONT"],
+    seed=42
+)
 
 # Randomly drop one radar sensor
-radar_points = get_radar_data(nusc, sample_rec, nsweeps=5, min_distance=1.0,
-                              dataroot="data/nuscenes", random_drop_one_radar=True)
+radar_points = get_radar_data(
+    nusc,
+    sample_rec,
+    nsweeps=5,
+    min_distance=1.0,
+    dataroot="data/nuscenes",
+    random_drop_one_radar=True,
+    seed=42
+)
 
 # Drop 30% of radar points from all sensors
-radar_points = get_radar_data(nusc, sample_rec, nsweeps=5, min_distance=1.0,
-                              dataroot="data/nuscenes", drop_percentage=30, drop_from_all=True)
+radar_points = get_radar_data(
+    nusc,
+    sample_rec,
+    nsweeps=5,
+    min_distance=1.0,
+    dataroot="data/nuscenes",
+    drop_percentage=30,
+    drop_from_all=True,
+    seed=42
+)
 
 # Add Gaussian noise to all radar sensors
-radar_points = get_radar_data(nusc, sample_rec, nsweeps=5, min_distance=1.0,
-                              dataroot="data/nuscenes", add_gaussian_noise=True,
-                              add_noise_to_all=True, noise_std=0.05)
+radar_points = get_radar_data(
+    nusc,
+    sample_rec,
+    nsweeps=5,
+    min_distance=1.0,
+    dataroot="data/nuscenes",
+    add_gaussian_noise=True,
+    add_noise_to_all=True,
+    noise_std=0.05,
+    seed=42
+)
 
 ```
 
