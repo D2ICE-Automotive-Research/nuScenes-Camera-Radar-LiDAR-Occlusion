@@ -100,35 +100,50 @@ radar_points = get_radar_data(
 
 ```
 
-### LiDAR Occlusions (Scripts in this Repo)
+### LiDAR Occlusions (Script in this Repo)
 
-
-The LiDAR occlusions are implemented in a modified `get_lidar_data()` function.  
-Replace the original function in `nuscenes_dataset.py` with the one provided in this repository.  
+LiDAR occlusions are implemented through a modified `get_lidar_data()` function, provided as a drop-in replacement for the corresponding function in the nuScenes data loading pipeline `nuscenes_dataset.py`. 
+All stochastic operations use a fixed random seed  `seed=42` to ensure reproducibility across runs. Example parameter settings corresponding to the experiments reported in the accompanying paper are documented in the script.
 
 ### LiDAR Occlusion Types
-1. **Random Point Drop** → randomly drops a percentage of LiDAR points across the whole cloud.  
-2. **Spatial Region-based Occlusion** → removes points from a fixed region of space (`front`, `back`, `left`, `right`).  
-3. **Angle-based Region Occlusion** → removes points within a specified angular field of view (e.g., ±45° around `front`, `back`, `left`, or `right`).  
+1. **Random Point Dropout** → Randomly removes a specified percentage of LiDAR points across the entire point cloud.  
+2. **Spatial Region-based Occlusion** → Removes points from a fixed spatial region (`front`, `back`, `left`, `right`).  
+3. **Angle-based Region Occlusion** → Removes points within a specified angular field of view (e.g., ±90° around `front`, `back`, `left`, or `right`).  
 
 ---
 
 ### Example Usage
 
 ```python
-# 1. Random Point Drop: drop 50% of LiDAR points
-lidar_points = get_lidar_data(nusc, sample_rec, nsweeps=10, min_distance=1.0,
-                              dataroot="data/nuscenes", drop_percentage=50)
+# 1. Random point dropout: drop 50% of LiDAR points (deterministic, givena  fixed seed)
+lidar_points = get_lidar_data(
+    nusc,
+    sample_rec,
+    nsweeps=10,
+    min_distance=1.0,
+    dataroot="data/nuscenes",
+    drop_percentage=50,
+    seed=42
+)
 
-# 2. Spatial Region Occlusion: remove all points in the left region
-lidar_points = drop_spatial_region(points, region="left", drop_percentage=100)
+# 2. Spatial region occlusion: remove all points in the left region
+lidar_points = drop_spatial_region(
+    points,
+    region="left",
+    drop_percentage=100
+)
 
-# 3. Angle-based Occlusion: drop 70% of points in the front (±45 degrees)
-lidar_points = drop_angle_based_region(points, region="front", drop_percentage=70, angle_range=90)
+# 3. Angle-based region occlusion: drop 70% of points in the front (±45 degrees)
+lidar_points = drop_angle_based_region(
+    points,
+    region="front",
+    drop_percentage=70,
+    angle_range=90
+)
 ```
 ## Acknowledgement
 
-This dataset is built upon the publicly available [nuScenes](https://www.nuscenes.org/) dataset by Motional. We thank the nuScenes team for providing a high-quality multi-sensor dataset that made the development of the Occluded nuScenes Dataset possible.
+This dataset is built upon the publicly available [nuScenes](https://www.nuscenes.org/) dataset by Motional. We thank the nuScenes team for providing a high-quality multi-sensor dataset that enabled the development of the Occluded nuScenes Dataset.
 
 
 ## Citation
@@ -145,13 +160,13 @@ title = {Occluded nuScenes: A Multi-Sensor Dataset for Evaluating Perception Rob
 year = {2025} }
 
 @ARTICLE{11204511,
-  author={Kumar, Sanjay and Sharma, Sushil and Asghar, Rabia and Mohandas, Reenu and Brophy, Tim and Sistu, Ganesh and Grua, Eoin Martino and Donzella, Valentina and Eising, Ciaran},
+  author={Kumar, Sanjay and Sharma, Sushil and Asghar, Rabia and Mohandas, Reenu and Brophy, Tim and Sistu, Ganesh and Grua, Eoin Martino and Donzella, Valentina and Eising, Ciarán},
   journal={IEEE Open Journal of Vehicular Technology}, 
   title={Exploring Sensor Impact and Architectural Robustness in Adverse Weather on BEV Perception}, 
   year={2025},
-  volume={},
+  volume={6},
   number={},
-  pages={1-22},
-  keywords={Cameras;Radar;Laser radar;Robustness;Transformers;Computer architecture;Snow;Spaceborne radar;Rain;Degradation;Multi-Sensor Fusion;Sensor Level Occlusion;Camera Features Projection;Bird's Eye View;Vehicle Segmentation;Map Segmentation;Transformer-Based Architectures;Geometric-Based Architectures},
+  pages={2857-2875},
+  keywords={Cameras;Radar;Laser radar;Robustness;Transformers;Computer architecture;Snow;Spaceborne radar;Rain;Degradation;Atmospheric measurements;Image quality;Multi-sensor fusion;sensor level occlusion;camera features projection;bird's eye view;vehicle segmentation;map segmentation;transformer-based architectures;geometric-based architectures},
   doi={10.1109/OJVT.2025.3621862}}
 
