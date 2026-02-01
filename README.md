@@ -1,10 +1,10 @@
 # nuScenes-Camera-Radar-LiDAR-Occlusion
 
-This repository provides **occlusion datasets and scripts** for the [nuScenes](https://www.nuscenes.org/) dataset.  
+This repository provides **occlusion dataset and scripts** for the [nuScenes](https://www.nuscenes.org/) dataset to support robustness analysis in automated driving perception.
 It includes:  
 
 - **Camera occlusion dataset** (Dirt, Water-blur, Scratches, Woodscape soiling patterns) hosted on **IEEE DataPort**.  
-- **Radar and LiDAR occlusion scripts** (Python functions) for simulating sensor degradations.  
+- **Radar and LiDAR occlusion scripts** provided as Python functions designed as drop-in replacements for the corresponding nuScenes data loading functions, enabling reproducible simulation of sensor degradations.  
 
 The goal is to simulate realistic sensor failures and degradations for **robust autonomous driving perception research**.  
 
